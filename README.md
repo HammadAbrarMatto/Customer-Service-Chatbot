@@ -9,7 +9,7 @@ A multi-feature AI-powered customer service chatbot built with Google Gemini, La
 | # | Feature | Description |
 |---|---------|-------------|
 | Base | Q&A Chatbot | Answers questions from a FAQ knowledge base using RAG |
-| 1 | Expand Knowledge Base | Dynamically add new URLs or CSV files to the knowledge base |
+| 1 | Expand Knowledge Base | Dynamically add new CSV files to the knowledge base (URL adding not recommended on free tier) |
 | 2 | Multimodal Image Chat | Upload an image and ask questions about it using Gemini Vision |
 | 3 | Medical Q&A | Answers medical questions using the MedQuAD dataset with entity recognition |
 | 4 | arXiv Expert | Searches and explains research papers from the arXiv dataset |
@@ -21,7 +21,7 @@ A multi-feature AI-powered customer service chatbot built with Google Gemini, La
 ## Tech Stack
 
 - **LLM:** Google Gemini 2.5 Flash
-- **Embeddings:** Google Gemini Embedding (via REST API)
+- **Embeddings:** Google Gemini Embedding (via direct REST API calls to v1 endpoint)
 - **Vector Store:** FAISS
 - **Framework:** LangChain + Streamlit
 - **Sentiment Analysis:** VADER
@@ -32,7 +32,7 @@ A multi-feature AI-powered customer service chatbot built with Google Gemini, La
 ## Project Structure
 
 ```
-customer_service_chatbot_LLM/
+Customer-Service-Chatbot/
 ├── src/
 │   ├── main.py                    # Streamlit app entry point
 │   ├── config.py                  # Model names, paths, API key loading
@@ -58,8 +58,8 @@ customer_service_chatbot_LLM/
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-cd YOUR_REPO_NAME
+git clone https://github.com/HammadAbrarMatto/Customer-Service-Chatbot.git
+cd Customer-Service-Chatbot
 ```
 
 ### 2. Create a virtual environment
@@ -119,7 +119,30 @@ cd src
 python -c "from tasks.task4_arxiv_expert import build_arxiv_db; build_arxiv_db('PATH/TO/arxiv-metadata-oai-snapshot.json')"
 ```
 
-> **Note:** The free tier Google API key has rate limits. The build scripts include automatic retry logic with delays. Allow 10-15 minutes for each database to build.
+---
+
+## Known Limitations (Free Tier API Key)
+
+This project uses the Google Gemini free tier API key which has strict rate limits. The following limitations apply:
+
+**Embedding rate limit (~5 requests/minute):**
+- Building the Task 3 (Medical) database is capped at **50 documents** to complete within rate limits
+- Building the Task 4 (arXiv) database is capped at **50 papers** to complete within rate limits
+- Each build takes 15-30 minutes due to 15-second delays between embedding calls
+- The build scripts include automatic retry logic (waits 60s on 429 errors)
+- Larger datasets will consistently hit rate limits and fail even with retries
+
+**Task 1 — URL ingestion not recommended on free tier:**
+- Adding a webpage URL (e.g. a Wikipedia article) splits it into hundreds of chunks
+- Each chunk requires one embedding API call
+- This exhausts the free tier quota very quickly and the process stalls indefinitely
+- **Workaround:** Use the CSV upload option in Task 1 instead (small CSV = few API calls = works fine)
+
+**Chat model rate limit:**
+- The free tier also limits `generateContent` calls per day
+- If you see a 429 error while chatting, wait a few minutes or create a new API key at https://aistudio.google.com/app/apikey
+
+**Solution for all of the above:** A paid Google AI Studio API key ($5 credit) removes all these limits and allows full dataset ingestion in under a minute.
 
 ---
 
