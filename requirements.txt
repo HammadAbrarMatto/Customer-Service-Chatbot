@@ -1,0 +1,33 @@
+# Core LLM + framework
+langchain==0.2.16
+langchain-community==0.2.16
+langchain-google-genai==1.0.10
+google-generativeai==0.7.2
+
+# Vector database
+faiss-cpu==1.8.0
+
+# Web app
+streamlit==1.37.1
+
+# Environment variables
+python-dotenv==1.0.1
+
+# Task 1: loading web pages
+beautifulsoup4==4.12.3
+
+# Task 2: handling images
+pillow==10.4.0
+
+# Task 5: sentiment analysis
+vaderSentiment==3.3.2
+
+# Task 6: language detection
+langdetect==1.0.9
+
+# Notebook / analysis (visual outputs: plots, confusion matrix)
+pandas==2.2.2
+matplotlib==3.9.2
+seaborn==0.13.2
+scikit-learn==1.5.1
+jupyter==1.0.0

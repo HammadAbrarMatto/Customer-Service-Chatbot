@@ -1,0 +1,21 @@
+# API key
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+
+# FAISS databases (too large for GitHub)
+src/faiss_index/
+src/faiss_index_medical/
+src/faiss_index_arxiv/
+
+# Logs
+*.log
+
+# VS Code
+.vscode/
