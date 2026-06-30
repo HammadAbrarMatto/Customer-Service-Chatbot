@@ -154,6 +154,16 @@ This project uses the Google Gemini free tier API key which has strict rate limi
 
 ---
 
+## Project Analysis & Visualizations
+
+See [`analysis.ipynb`](analysis.ipynb) for:
+- FAQ dataset analysis and plots
+- Sentiment analysis results and confusion matrix
+- MedQuAD dataset exploration
+- RAG pipeline architecture diagram
+- Baseline vs advanced model comparison
+- Full list of technical challenges and solutions
+
 ## License
 
 MIT
