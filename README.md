@@ -114,6 +114,10 @@ Changing the embedding backend requires rebuilding the indexes (the app detects 
 
 ---
 
+## ✅ Live check
+
+`python scripts/live_check.py` runs against the real Gemini API and the local embedding model: generate, streaming, FAQ index build, English and **Hindi→English cross-lingual** retrieval, the off-topic filter, a full Spanish/negative chat turn, vision, batched Gemini embeddings and medical Q&A. It uses a temporary index folder, so your real indexes are untouched.
+
 ## Tests
 
 ```bash
