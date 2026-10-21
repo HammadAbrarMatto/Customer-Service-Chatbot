@@ -18,7 +18,7 @@ A retrieval-augmented customer-support assistant built on **Google Gemini**, **F
 | 🌐 | **Multilingual** (Task 6) | Lingua detects 20+ languages. Multilingual embeddings match a Hindi or Spanish question to an English FAQ, and the answer comes back in the customer's language |
 | 📚 | **Live knowledge-base expansion** (Task 1) | Upload a CSV or add a web page from the UI or CLI. Documents are merged incrementally and every update is logged |
 | 🖼️ | **Image chat** (Task 2) | Ask about a photo of a damaged item, an error screenshot or a receipt (Gemini vision, streamed) |
-| 🩺 | **Medical Q&A** (Task 3) | RAG over MedQuAD (47k passages available), entity recognition (symptoms, diseases, treatments, tests), safety prompt and disclaimer |
+| 🩺 | **Medical Q&A** (Task 3) | RAG over MedQuAD (16k Q&A pairs → 28k passages), entity recognition (symptoms, diseases, treatments, tests), safety prompt and disclaimer |
 | 📄 | **arXiv expert** (Task 4) | Semantic paper search, category chart, per-paper summaries, side-by-side comparison, concept explanations |
 
 ---
@@ -85,7 +85,7 @@ On first launch the FAQ index builds automatically, which takes about 20 s. The 
 
 ```bash
 # Medical Q&A (MedQuAD CSV is already in data/)
-python -m csbot.cli build-medical --limit 5000     # 0 = all ~47k chunks
+python -m csbot.cli build-medical --limit 5000     # 0 = all ~28k chunks
 
 # arXiv expert (download arxiv-metadata-oai-snapshot.json from Kaggle)
 python -m csbot.cli build-arxiv path/to/arxiv-metadata-oai-snapshot.json --category cs. --limit 5000

@@ -28,7 +28,7 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("prepare-medquad")
     p.add_argument("folder")
     p = sub.add_parser("build-medical")
-    p.add_argument("--limit", type=int, default=5000, help="max chunks (0 = all ~47k)")
+    p.add_argument("--limit", type=int, default=5000, help="max chunks (0 = all ~28k)")
     p = sub.add_parser("build-arxiv")
     p.add_argument("json_path")
     p.add_argument("--category", default="cs.")
