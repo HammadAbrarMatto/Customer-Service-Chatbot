@@ -1,21 +1,15 @@
-# API key
 .env
-
-# Python cache
 __pycache__/
 *.pyc
-*.pyo
-
-# Virtual environment
+.pytest_cache/
+.ruff_cache/
 venv/
+.venv/
+.ipynb_checkpoints/
 
-# FAISS databases (too large for GitHub)
-src/faiss_index/
-src/faiss_index_medical/
-src/faiss_index_arxiv/
-
-# Logs
+# Vector indexes are rebuilt locally
+indexes/
 *.log
-
-# VS Code
 .vscode/
+.idea/
+.DS_Store
